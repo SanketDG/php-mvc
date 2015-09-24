@@ -13,7 +13,7 @@ class App
 
         $url = $this->parseUrl();
 
-        if(file_exists('../app/controllers/{url[0]}.php'))
+        if(file_exists('../app/controllers/'.$url[0].'.php'))
         {
             $this->controller = $url[0];
             unset($url[0]);
@@ -32,7 +32,7 @@ class App
             }
         }
 
-        $this->param = $url ? array_values($url) : [];
+        $this->params = $url ? array_values($url) : [];
 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
